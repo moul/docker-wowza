@@ -1,0 +1,5 @@
+#!/bin/bash
+
+KEY=$1
+cd /usr/local/WowzaMediaServer/bin
+echo $KEY | ./startup.sh
