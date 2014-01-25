@@ -1,6 +1,8 @@
 FROM ubuntu:latest
 MAINTAINER Manfred Touron m@42.am
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # SYSTEM
 RUN locale-gen en_US en_US.UTF-8
 RUN apt-get update -y
@@ -22,7 +24,7 @@ ENTRYPOINT ["/start"]
 
 # WOWZA
 RUN cd /tmp && \
-    wget http://www.wowza.com/downloads/WowzaMediaServer-3-6-3/WowzaMediaServer-3.6.3.deb.bin && \
+    wget -q http://www.wowza.com/downloads/WowzaMediaServer-3-6-3/WowzaMediaServer-3.6.3.deb.bin && \
     chmod +x /tmp/WowzaMediaServer*.bin && \
     echo "yes" | /tmp/WowzaMediaServer*.bin && \
     rm -f /tmp/WowzaMediaServer*.bin
